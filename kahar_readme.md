@@ -1,4 +1,4 @@
-##Process of running triplets-extraction
+## Process of running triplets-extraction
 
 ### set up conda environment
 
@@ -8,7 +8,7 @@
     chmod u+x Anaconda3-5.2.0-Linux-x86_64.sh
     ./Anaconda3-5.2.0-Linux-x86_64.sh
     ````
-2. config conda in order to speed up download ,
+2. config conda in order to speed up downloading speed ,
    TUNA 提供了 Anaconda 仓库的镜像，运行以下命令:
     ````
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
@@ -44,18 +44,18 @@ then import nltk,and then by download() function to download punkt corpus, finll
    q
 ````
 
-6. need rename Data to data in the code directory:
+6. need to rename the `Data` directory to the `data` in the code directory:
 
 ````
     cd triplets-extraction
     mv /disk3/NYT-20180613T131152Z-001.zip ./Data
     cd Data
+    unzip NYT-20180613T131152Z-001.zip
     cp train.json ../demo/
     cd ..
     mv Data data
     python TaggingScheme.py
-    unzip NYT-20180613T131152Z-001.zip
-
+    
 ````
     
 
