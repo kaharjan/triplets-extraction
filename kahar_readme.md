@@ -65,7 +65,30 @@ then import nltk,and then by download() function to download punkt corpus, finll
     source activate theano08kearas033py2.7
     pip uninstall Keras
     pip install Keras==0.3.3
+    pip install theano==0.8
     mkdir ./data/demo/model
+````
+9. need to change backend setting for keras
+If you have run Keras at least once, you will find the Keras configuration file at:
+````
+$HOME/.keras/keras.json
+````
+The default configuration file looks like this:
+````
+
+{
+    "image_data_format": "channels_last",
+    "epsilon": 1e-07,
+    "floatx": "float32",
+    "backend": "tensorflow"
+}
+````
+
+Simply change the field backend to "theano", "tensorflow", or "cntk", and Keras will use the new configuration next time you run any Keras code.
+
+10. run the code
+
+````
     python End2EndModel.py
 ````
 
