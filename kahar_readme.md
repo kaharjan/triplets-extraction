@@ -57,7 +57,16 @@ then import nltk,and then by download() function to download punkt corpus, finll
     python TaggingScheme.py
     
 ````
+
+7. get w2v.pkl file from other people, copy it to  `data/demo/`
     
+8. need to get right version of Keras, first uninstall current one, then install right one.
+````
+    source activate theano08kearas033py2.7
+    pip uninstall Keras
+    pip install Keras==0.3.3
+````
+
 
  
 
