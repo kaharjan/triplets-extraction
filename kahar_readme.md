@@ -65,7 +65,10 @@ then import nltk,and then by download() function to download punkt corpus, finll
     source activate theano08kearas033py2.7
     pip uninstall Keras
     pip install Keras==0.3.3
+    mkdir ./data/demo/model
+    python End2EndModel.py
 ````
+
 
 
  
