@@ -32,6 +32,7 @@ class StateTransferLSTM(LSTM):
         # input shape: (nb_samples, time (padded with zeros), input_dim)
         X = self.get_input(train)
         if K._BACKEND == 'tensorflow':
+        #if K._BACKEND == 'theano'
             if not self.input_shape[1]:
                 raise Exception('When using TensorFlow, you should define ' +
                                 'explicitly the number of timesteps of ' +

@@ -130,6 +130,7 @@ def train_e2e_model(eelstmfile, modelfile,resultdir,npochos,
                     lossnum=1,batch_size = 50,retrain=False):
 
     # load training data and test data
+    print("loding elstmfile:{}".format(eelstmfile))
     traindata, testdata, source_W, source_vob, sourc_idex_word, target_vob, target_idex_word, max_s, k \
         = cPickle.load(open(eelstmfile, 'rb'))
 
@@ -137,6 +138,7 @@ def train_e2e_model(eelstmfile, modelfile,resultdir,npochos,
     x_train = np.asarray(traindata[0], dtype="int32")
     y_train = np.asarray(traindata[1], dtype="int32")
 
+    print("creating binary tag LSTM....")
     nn_model = creat_binary_tag_LSTM(sourcevocabsize=len(source_vob), targetvocabsize=len(target_vob),
                                     source_W=source_W, input_seq_lenth=max_s, output_seq_lenth=max_s,
                                     hidden_dim=k, emd_dim=k)
@@ -149,6 +151,7 @@ def train_e2e_model(eelstmfile, modelfile,resultdir,npochos,
     maxF=0
     while (epoch < npochos):
         epoch = epoch + 1
+        print("epoch {}".format(epoch))
         for x, y in get_training_batch_xy_bias(x_train, y_train, max_s, max_s,
                                           batch_size, len(target_vob),
                                             target_idex_word,lossnum,shuffle=True):
@@ -156,6 +159,7 @@ def train_e2e_model(eelstmfile, modelfile,resultdir,npochos,
                          nb_epoch=1, show_accuracy=False, verbose=0)
             if epoch > saveepoch:
                 saveepoch += save_inter
+                print("saving epoch {}".format(saveepoch))
                 resultfile = resultdir+"result-"+str(saveepoch)
                 P, R, F, pre1, rre1, fe1, pre2, rre2, fe2, tp1f, tp2f\
                     = test_model(nn_model, testdata, target_idex_word,resultfile)
